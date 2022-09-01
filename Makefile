@@ -1,7 +1,12 @@
 .POSIX:
+RM ?= rm -f
 
-LDLIBS ?= -lncurses -ltinfo
+CFLAGS += -std=c99
+LDLIBS ?= -lcurses -ltinfo
 
-all: hello
+PROG = hello sample initfunc printw scanw attributes
+all: ${PROG}
 clean:
-	${RM} hello
+	${RM} ${PROG}
+
+.PHONY: all clean
