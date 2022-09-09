@@ -1,10 +1,11 @@
 #include <string.h>
 #include <curses.h>
 
+const char *mesg = "just a string";
+
 int
 main()
 {
-	char mesg[] = "just a string";
 	int row, col;
 	int ch;
 
@@ -17,6 +18,7 @@ main()
 	mvprintw(row-2, 0,
 		 "this screen has %d rows and %d columns\n", row, col);
 	printw("try resizing your window and then run this program again");
+	move(row/3, col/3);
 	refresh();
 	do {
 		ch = getch();

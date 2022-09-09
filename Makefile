@@ -1,5 +1,5 @@
 .POSIX:
-KHCFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS)
+KHFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 LDLIBS = -lcurses -ltinfo
 
 PROG = hello sample initfunc printw scanw attributes
@@ -8,5 +8,5 @@ clean:
 	rm -f $(PROG)
 
 .c:
-	$(CC) $(KHCFLAGS) $(LDFLAGS) $< $(LDLIBS) -o $@
+	$(CC) $(KHFLAGS) $< $(LDLIBS) -o $@
 .PHONY: all clean
