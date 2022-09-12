@@ -10,6 +10,10 @@ main()
 	int ch;
 
 	initscr();
+	raw();
+	keypad(stdscr, TRUE);
+	noecho();
+
 	getmaxyx(stdscr, row, col);
 	move(row/2, (col-strlen(mesg))/2);
 	attron(A_BOLD);
@@ -20,9 +24,8 @@ main()
 	printw("try resizing your window and then run this program again");
 	move(row/3, col/3);
 	refresh();
-	do {
-		ch = getch();
-	} while (ch != 'q');
+	while ((ch = getch()) != 'q')
+		addch(ch);
 	endwin();
 
 	return 0;
