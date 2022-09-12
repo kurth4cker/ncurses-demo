@@ -6,11 +6,11 @@ main()
 	int ch;
 	int num = 0;
 
-	(void) initscr();
+	initscr();
+	raw();
 	keypad(stdscr, TRUE);
-	(void) nonl();
-	(void) cbreak();
-	(void) echo();
+	cbreak();
+	noecho();
 
 	if (has_colors()) {
 		start_color();
@@ -23,6 +23,7 @@ main()
 	while (ch != 'q') {
 		attrset(COLOR_PAIR(num % 3 + 1));
 		ch = getch();
+		addch(ch);
 		num++;
 	}
 	endwin();

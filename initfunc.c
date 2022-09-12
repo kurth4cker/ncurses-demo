@@ -18,7 +18,7 @@ main()
 	} else {
 		printw("the pressed key is ");
 		attron(A_BOLD);
-		printw("%c", ch);
+		addch(ch);
 		attroff(A_BOLD);
 	}
 	refresh();
@@ -30,7 +30,7 @@ main()
 		else if (ch == 'c')
 			attroff(A_BOLD);
 		else
-			printw("%c", ch);
+			addch(ch);
 	}
 	attroff(A_BOLD);
 	endwin();
