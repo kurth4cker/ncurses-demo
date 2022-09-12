@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <curses.h>
 
 int
@@ -26,6 +25,7 @@ main()
 		ch = getch();
 		num++;
 	}
+	endwin();
 
-	exit(0);
+	return 0;
 }

@@ -4,7 +4,8 @@
 int
 main(int argc, char *argv[])
 {
-	int ch, prev, row, col;
+	int ch, prev; /* current and previous characters */
+	int row;
 	FILE *fp;
 	int y, x;
 	prev = EOF;
@@ -20,7 +21,7 @@ main(int argc, char *argv[])
 	}
 
 	initscr();                    /* start curses mode */
-	getmaxyx(stdscr, row, col);
+	row = getmaxy(stdscr);
 	ch = fgetc(fp);
 	while (ch != EOF) {
 		getyx(stdscr, y, x);
