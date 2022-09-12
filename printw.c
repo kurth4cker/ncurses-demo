@@ -1,5 +1,5 @@
 #include <string.h>
-#include <curses.h>
+#include <ncurses.h>
 
 const char *mesg = "just a string";
 

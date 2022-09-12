@@ -1,6 +1,6 @@
 .POSIX:
+LDLIBS = -lncurses -ltinfo
 KHFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
-LDLIBS = -lcurses -ltinfo
 
 PROG = hello sample initfunc printw scanw attributes
 all: $(PROG)
