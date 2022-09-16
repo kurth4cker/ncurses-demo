@@ -1,5 +1,5 @@
 .POSIX:
-# customizable flags
+# customizable flags (you can also customize CFLAGS, CPPFLAGS and LDFLAGS)
 LDLIBS = -lncurses -ltinfo
 
 # don't customize them
@@ -14,4 +14,3 @@ clean:
 .SUFFIXES: .c
 .c:
 	$(CC) $(KHFLAGS) $< $(LDLIBS) -o $@
-.PHONY: all clean
