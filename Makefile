@@ -1,5 +1,7 @@
 .POSIX:
-# customizable flags (you can also customize CFLAGS, CPPFLAGS and LDFLAGS)
+# customizable macros (you can also customize CFLAGS, CPPFLAGS and LDFLAGS)
+CC = cc
+
 LDLIBS = -lncurses -ltinfo
 
 # don't customize them
