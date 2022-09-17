@@ -1,0 +1,11 @@
+khello-lncurses
+===============
+demo programs for ncurses learning. They are generally examples from
+ncurses-intro and NCURSES-programming-HOWTO from ncurses home page
+(https://gnu.org/software/ncurses).
+
+Building
+--------
+You can just type `make' to build. There is no installation yet. Just
+run demo programs with `./program_name'. Or copy them to anywhere in
+your path. `$HOME/.local/bin' or `/usr/local/bin' recommended.
