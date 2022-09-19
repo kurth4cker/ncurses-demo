@@ -32,7 +32,7 @@ main()
 	print_win_params(&win);
 
 	attron(COLOR_PAIR(1));
-	printw("press `q' to exit");
+	mvprintw(0, 0, "press `q' to exit");
 	refresh();
 	attroff(COLOR_PAIR(1));
 
@@ -60,6 +60,9 @@ main()
 			create_box(&win, TRUE);
 			break;
 		}
+
+		print_win_params(&win);
+		refresh();
 	}
 
 	endwin();
@@ -87,12 +90,9 @@ init_win_params(WIN *winptr)
 static WIN *
 print_win_params(WIN *winptr)
 {
-#ifdef DEBUG
-	mvprintw(25, 0, "%d %d %d %d",
-		 winptr->startx, winptr->starty,
-		 winptr->width, winptr->height);
-	refresh();
-#endif
+	mvprintw(2, 0, "width: %d", winptr->width);
+	mvprintw(3, 0, "height: %d", winptr->height);
+	mvprintw(5, 0, "positions: %d %d", winptr->starty, winptr->startx);
 
 	return winptr;
 }
@@ -122,6 +122,4 @@ create_box(WIN *winptr, bool flag)
 			for (i = x; i <= x + w; i++)
 				mvaddch(j, i, ' ');
 	}
-
-	refresh();
 }
