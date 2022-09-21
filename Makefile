@@ -7,7 +7,8 @@ LDLIBS = -lncurses -ltinfo
 # don't customize them
 KHFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 
-PROG = hello sample initfunc printw scanw attributes chgat window line
+PROG = hello sample initfunc printw scanw attributes chgat window line\
+	color
 
 all: $(PROG)
 clean:
