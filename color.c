@@ -1,7 +1,8 @@
 #include <ncurses.h>
 #include <string.h>
 
-void print_in_middle(WINDOW*, int, int, int, char *string);
+#define print_in_middle(starty,startx,width,string)	wprint_in_middle(stdscr,(starty),(startx),(width),(string))
+void wprint_in_middle(WINDOW*, int, int, int, char *string);
 
 int
 main()
@@ -16,7 +17,7 @@ main()
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 
 	attron(COLOR_PAIR(1));
-	print_in_middle(stdscr, LINES / 2, 0, 0, "viola!!! in color...");
+	print_in_middle(LINES / 2, 0, 0, "viola!!! in color...");
 	attroff(COLOR_PAIR(1));
 
 	getch();
@@ -25,7 +26,7 @@ main()
 }
 
 void
-print_in_middle(WINDOW *win, int starty, int startx, int width, char *string)
+wprint_in_middle(WINDOW *win, int starty, int startx, int width, char *string)
 {
 	int length, x, y;
 	float temp;
