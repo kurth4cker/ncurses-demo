@@ -1,21 +1,23 @@
 #include <string.h>
 #include <ncurses.h>
 
+const char *mesg = "enter a string: ";
+
 int
 main()
 {
-	char mesg[] = "enter a string: ";
 	char str[80];
-	int row, col;
 
 	initscr();
-	getmaxyx(stdscr, row, col);
-	mvprintw(row/2, (col-strlen(mesg))/2,
-		 "%s", mesg);
+
+	mvaddstr(15, 20, mesg);
 	getstr(str);
-	mvprintw(LINES - 2, 0, "you entered: %s", str);
+
+	move(LINES - 2, 0);
+	addstr("you entered: ");
+	addstr(str);
+
 	getch();
 	endwin();
-
 	return 0;
 }
