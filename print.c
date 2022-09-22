@@ -7,7 +7,6 @@ const char *printwmesg = "string written by printw";
 int
 main()
 {
-	int row, col;
 	int ch;
 
 	initscr();

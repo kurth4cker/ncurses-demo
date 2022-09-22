@@ -38,28 +38,24 @@ main()
 
 	create_box(&win, TRUE);
 	while ((ch = getch()) != 'q') {
+		create_box(&win, FALSE);
+
 		switch (ch) {
 		case KEY_LEFT:
-			create_box(&win, FALSE);
 			--win.startx;
-			create_box(&win, TRUE);
 			break;
 		case KEY_RIGHT:
-			create_box(&win, FALSE);
 			++win.startx;
-			create_box(&win, TRUE);
 			break;
 		case KEY_UP:
-			create_box(&win, FALSE);
 			--win.starty;
-			create_box(&win, TRUE);
 			break;
 		case KEY_DOWN:
-			create_box(&win, FALSE);
 			++win.starty;
-			create_box(&win, TRUE);
 			break;
 		}
+
+		create_box(&win, TRUE);
 
 		print_win_params(&win);
 		refresh();
