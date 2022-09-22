@@ -26,7 +26,7 @@ main(int argc, char *argv[])
 	while (ch != EOF) {
 		getyx(stdscr, y, x);
 		if (y == (row - 1)) {
-			printw("<-press any key->");
+		        addstr("<-press any key->");
 			getch();
 			clear();
 			move(0, 0);
@@ -35,10 +35,10 @@ main(int argc, char *argv[])
 			attron(A_BOLD);
 			getyx(stdscr, y, x);
 			move(y, x -1);
-			printw("%c%c", '/', ch);
-		} else {
-			printw("%c", ch);
+			addch(prev);
 		}
+		addch(ch);
+
 		refresh();
 		if (prev == '*' && ch == '/')
 			attroff(A_BOLD);
