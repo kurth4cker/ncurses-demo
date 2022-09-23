@@ -36,7 +36,7 @@ main()
 
 	menu_win = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(menu_win, TRUE);
-	mvprintw(0, 0, "use arrow keys to go up and down. press enter to select an choice");
+	addstr("use arrow keys to go up and down. press enter to select an choice");
 	refresh();
 	print_menu(menu_win, highlight);
 	while (1) {
@@ -57,8 +57,14 @@ main()
 		case 10:
 			choice = highlight;
 			break;
+		case 'q':
+			endwin();
+			return 0;
 		default:
-			mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
+			mvprintw(24, 0,
+				 "Character pressed is = %3d. "
+				 "Hopefully it can be printed as '%c'",
+				 c, c);
 			refresh();
 			break;
 		}
@@ -66,9 +72,11 @@ main()
 		if (choice != 0)
 			break;
 	}
-	mvprintw(23, 0, "you choose choice %d: %s\n", choice, choices[choice - 1]);
+	mvprintw(23, 0, "you choose \'%s\'.", choices[choice - 1]);
+	mvprintw(24, 0, "it's number is %d", choice);
 	clrtoeol();
 	refresh();
+	getch();
 	endwin();
 	return 0;
 }
@@ -84,11 +92,11 @@ print_menu(WINDOW *menu_win, int highlight)
         for(i = 0; i < n_choices; ++i)
         {       if(highlight == i + 1) /* High light the present choice */
                 {       wattron(menu_win, A_REVERSE);
-                        mvwprintw(menu_win, y, x, "%s", choices[i]);
+                        mvwaddstr(menu_win, y, x, choices[i]);
                         wattroff(menu_win, A_REVERSE);
                 }
                 else
-                        mvwprintw(menu_win, y, x, "%s", choices[i]);
+                        mvwaddstr(menu_win, y, x, choices[i]);
                 ++y;
         }
         wrefresh(menu_win);
