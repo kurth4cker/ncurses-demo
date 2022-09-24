@@ -26,7 +26,6 @@ main()
 	while ((ch = getch()) != 'q') {
 		wborder(win, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 		wrefresh(win);
-		delwin(win);
 
 		switch(ch) {
 		case KEY_LEFT:
@@ -43,7 +42,7 @@ main()
 			break;
 		}
 
-		win = newwin(height, width, starty, startx);
+		mvwin(win, starty, startx);
 		box(win, 0, 0);
 		wrefresh(win);
 	}
