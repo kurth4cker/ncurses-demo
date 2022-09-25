@@ -10,20 +10,14 @@ main()
 	keypad(stdscr, TRUE);
 	noecho();
 
-	addstr("type any character to see it in bold\n");
+	addstr("type any character to see it in bold");
 	ch = getch();
 
-	if (ch == KEY_F(1)) {
-		addstr("F1 key pressed");
-	} else {
-		addstr("the pressed key is ");
-		attron(A_BOLD);
-		addch(ch);
-		attroff(A_BOLD);
-	}
+	mvaddstr(3, 0, "the pressed key is: ");
+	attron(A_BOLD);
+	addch(ch);
 	refresh();
 
-	attron(A_BOLD);
 	while ((ch = getch()) != 'q') {
 		if (ch == 'o')
 			attron(A_BOLD);
@@ -32,7 +26,6 @@ main()
 		else
 			addch(ch);
 	}
-	attroff(A_BOLD);
 	endwin();
 
 	return 0;
