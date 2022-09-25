@@ -8,6 +8,7 @@ int
 main()
 {
 	initscr();
+	curs_set(0);
 	if (has_colors() == FALSE) {
 		endwin();
 	        puts("your terminal does not support color");

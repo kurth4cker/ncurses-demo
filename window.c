@@ -10,6 +10,7 @@ main()
 	initscr();
 	cbreak();
 	keypad(stdscr, TRUE);
+	curs_set(0);
 
 	height = 3;
 	width = 10;

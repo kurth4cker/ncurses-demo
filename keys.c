@@ -30,6 +30,7 @@ main()
 	clear();
 	noecho();
 	cbreak();
+	curs_set(0);
 
 	startx = (80 - WIDTH) / 2;
 	starty = (24 - HEIGHT) / 2;
