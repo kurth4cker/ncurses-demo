@@ -8,7 +8,7 @@ LDLIBS = -lncurses -ltinfo
 KHFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 
 PROG = hello sample initfunc print scanw attributes chgat window\
-	color keys leaving
+	color keys leaving acs
 
 all: $(PROG)
 clean:
