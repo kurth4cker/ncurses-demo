@@ -4,6 +4,8 @@
 int
 main()
 {
+	int ret;
+
 	initscr();
 	curs_set(0);
 	noecho();
@@ -14,7 +16,7 @@ main()
 
 	def_prog_mode();
 	endwin();
-	system("/bin/sh");
+	ret = system("/bin/sh");
 	reset_prog_mode();
 
 	addstr("another string");
@@ -22,5 +24,8 @@ main()
 
 	getch();
 	endwin();
-	return 0;
+	if (ret == -1)
+		return 1;
+	else
+		return 0;
 }
