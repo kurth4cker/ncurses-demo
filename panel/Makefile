@@ -5,7 +5,7 @@ LDLIBS = -lpanel -lncurses -ltinfo
 
 KHFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 
-PROG = basic
+PROG = basic browsing
 
 all: $(PROG)
 clean:
