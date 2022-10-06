@@ -1,135 +1,71 @@
 #include <ncurses.h>
 
+struct ex {
+	char *str;
+	char acsvar;
+};
+typedef struct ex ex_t;
+
+ex_t acs_vars[] = {
+	{"upper left corner               ", 'l'},
+	{"lower left corner               ", 'm'},
+	{"upper right corner              ", 'k'},
+	{"lower right corner              ", 'j'},
+	{"tee pointing right              ", 't'},
+	{"tee pointing left               ", 'u'},
+	{"tee pointing up                 ", 'v'},
+	{"tee pointing down               ", 'w'},
+	{"horizontal line                 ", 'q'},
+	{"vertical line                   ", 'x'},
+	{"large plus or cross over        ", 'n'},
+	{"scan line 1                     ", 'o'},
+	{"scan line 3                     ", 'p'},
+	{"scan line 7                     ", 'r'},
+	{"scan line 9                     ", 's'},
+	{"diamond                         ", '`'},
+	{"checker board (stipple)         ", 'a'},
+	{"degree symbol                   ", 'f'},
+	{"plus/minus symbol               ", 'g'},
+	{"bullet                          ", '~'},
+	{"arrow pointing left             ", ','},
+	{"arrow pointing right            ", '+'},
+	{"arrow pointing down             ", '.'},
+	{"arrow pointing up               ", '-'},
+	{"board of squares                ", 'h'},
+	{"lantern symbol                  ", 'i'},
+	{"solid square block              ", '0'},
+	{"less/equal sign                 ", 'y'},
+	{"greater/equal sign              ", 'z'},
+	{"pi                              ", '{'},
+	{"not equal                       ", '|'},
+	{"UK pound sign                   ", '}'},
+};
+
 int
 main()
 {
+        size_t i;
+	int ch;
+
 	initscr();
 	curs_set(0);
 	noecho();
 
-	addstr("upper left corner               ");
-	addch(ACS_ULCORNER);
-	addch('\n');
+	while ((ch = getch()) != 'q') {
+		clear();
 
-	addstr("lower left corner               ");
-	addch(ACS_LLCORNER);
-	addch('\n');
+		for (i = 0; i < sizeof(acs_vars)/sizeof(*acs_vars); i++) {
+			addstr(acs_vars[i].str);
+			addch(NCURSES_ACS(acs_vars[i].acsvar));
+			addch('\n');
+			getch();
+		}
 
-	addstr("lower right corner              ");
-	addch(ACS_LRCORNER);
-	addch('\n');
-
-	addstr("tee pointing right              ");
-	addch(ACS_LTEE);
-	addch('\n');
-
-	addstr("tee pointing left               ");
-	addch(ACS_RTEE);
-	addch('\n');
-
-	addstr("tee pointing up                 ");
-	addch(ACS_BTEE);
-	addch('\n');
-
-	addstr("tee pointing down               ");
-	addch(ACS_TTEE);
-	addch('\n');
-
-	addstr("horizontal line                 ");
-	addch(ACS_HLINE);
-	addch('\n');
-
-	addstr("vertical line                   ");
-	addch(ACS_VLINE);
-	addch('\n');
-
-	addstr("large plus or cross over        ");
-	addch(ACS_PLUS);
-	addch('\n');
-
-	addstr("scan line 1                     ");
-	addch(ACS_S1);
-	addch('\n');
-
-	addstr("scan line 3                     ");
-	addch(ACS_S3);
-	addch('\n');
-
-	addstr("scan line 7                     ");
-	addch(ACS_S7);
-	addch('\n');
-
-	addstr("scan line 9                     ");
-	addch(ACS_S9);
-	addch('\n');
-
-	addstr("diamond                         ");
-	addch(ACS_DIAMOND);
-	addch('\n');
-
-	addstr("checker board (stipple)         ");
-	addch(ACS_CKBOARD);
-	addch('\n');
-
-	addstr("degree symbol                   ");
-	addch(ACS_DEGREE);
-	addch('\n');
-
-	addstr("plus/minus symbol               ");
-	addch(ACS_PLMINUS);
-	addch('\n');
-
-	addstr("bullet                          ");
-	addch(ACS_BULLET);
-	addch('\n');
-
-	addstr("arrow pointing left             ");
-	addch(ACS_LARROW);
-	addch('\n');
-
-	addstr("arrow pointing right            ");
-	addch(ACS_RARROW);
-	addch('\n');
-
-	addstr("arrow pointing down             ");
-	addch(ACS_DARROW);
-	addch('\n');
-
-	addstr("arrow pointing up               ");
-	addch(ACS_UARROW);
-	addch('\n');
-
-	addstr("board of squares                ");
-	addch(ACS_BOARD);
-	addch('\n');
-
-	addstr("lantern symbol                  ");
-	addch(ACS_LANTERN);
-	addch('\n');
-
-	addstr("solid square block              ");
-	addch(ACS_BLOCK);
-	addch('\n');
-
-	addstr("less/equal sign                 ");
-	addch(ACS_LEQUAL);
-	addch('\n');
-
-	addstr("greater/equal sign              ");
-	addch(ACS_GEQUAL);
-	addch('\n');
-
-	addstr("pi                              ");
-	addch(ACS_PI);
-	addch('\n');
-
-	addstr("not equal                       ");
-	addch(ACS_NEQUAL);
-	addch('\n');
-
-	addstr("UK pound sign                   ");
-	addch(ACS_STERLING);
-	addch('\n');
+		addch('\n');
+		attron(A_BOLD);
+		addstr("press `q' to exit, another key to repeat");
+		attroff(A_BOLD);
+	}
 
 	refresh();
 	getch();
