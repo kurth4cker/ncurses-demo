@@ -53,17 +53,25 @@ main()
 
 	while ((ch = getch()) != 'q') {
 		clear();
+		attron(A_BOLD);
+		move(sizeof(acs_vars)/sizeof(*acs_vars) + 2, 0);
+		addstr("press `q' to exit. another key to repeat");
+		attroff(A_BOLD);
+		move(0, 0);
 
 		for (i = 0; i < sizeof(acs_vars)/sizeof(*acs_vars); i++) {
 			addstr(acs_vars[i].str);
 			addch(NCURSES_ACS(acs_vars[i].acsvar));
 			addch('\n');
-			getch();
+			ch = getch();
+			if (ch == 'q') {
+				endwin();
+				return 0;
+			}
 		}
 
-		addch('\n');
 		attron(A_BOLD);
-		addstr("press `q' to exit, another key to repeat");
+		addstr("finished");
 		attroff(A_BOLD);
 	}
 
