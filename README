@@ -9,6 +9,3 @@ Building
 You can just type `make' to build. There is no installation yet. Just
 run demo programs with `./program_name'. Or copy them to anywhere in
 your path. `$HOME/.local/bin' or `/usr/local/bin' recommended.
-
-If you want to build panel library related demo programs just go to
-panel subdirectory and run again `make'.
