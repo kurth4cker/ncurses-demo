@@ -19,12 +19,16 @@ main()
 	addch(ch);
 
 	while ((ch = getch()) != 'q') {
-		if (ch == 'o')
+		switch (ch) {
+		case 'o':
 			attron(A_BOLD);
-		else if (ch == 'c')
+			break;
+		case 'c':
 			attroff(A_BOLD);
-		else
+			break;
+		default:
 			addch(ch);
+		}
 	}
 
 	endwin();
