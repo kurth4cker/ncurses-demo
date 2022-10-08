@@ -4,7 +4,9 @@ int
 main()
 {
 	WINDOW *win;
-	int startx, starty, width, height;
+	int starty, startx;
+	int height, width;
+	int maxy, maxx;
 	int ch;
 
 	initscr();
@@ -12,10 +14,11 @@ main()
 	keypad(stdscr, TRUE);
 	curs_set(0);
 
+	getmaxyx(stdscr, maxy, maxx);
 	height = 3;
 	width = 10;
-	starty = (LINES - height) / 2;
-	startx = (COLS - width) / 2;
+	starty = maxy / 2;
+	startx = maxx / 2;
 
 	printw("press `q' to exit");
 	refresh();
@@ -28,7 +31,7 @@ main()
 		wborder(win, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 		wrefresh(win);
 
-		switch(ch) {
+		switch (ch) {
 		case KEY_LEFT:
 			startx--;
 			break;
