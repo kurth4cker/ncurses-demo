@@ -13,7 +13,8 @@ main()
 	addstr("type any character to see it in bold");
 	ch = getch();
 
-	mvaddstr(3, 0, "the pressed key is: ");
+	move(3, 0);
+	addstr("the pressed key is: ");
 	attron(A_BOLD);
 	addch(ch);
 

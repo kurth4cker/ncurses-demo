@@ -10,7 +10,8 @@ main()
 
 	initscr();
 
-	mvaddstr(15, 20, mesg);
+	move(15, 20);
+	addstr("enter a string: ");
 	getstr(str);
 
 	curs_set(0);
