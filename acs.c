@@ -50,7 +50,6 @@ main()
 {
 	WINDOW *win;
 	size_t i, len;
-	int ch;
 
 	len = ARRSIZE(acs_vars);
 
@@ -65,8 +64,7 @@ main()
 	addstr("press `q' to exit. another key to repeat");
 	attroff(A_BOLD);
 
-	while ((ch = getch()) != 'q') {
-		wmove(win, 0, 0);
+	while (getch() != 'q') {
 		wclear(win);
 
 		for (i = 0; i < len; i++) {
@@ -76,11 +74,8 @@ main()
 			waddch(win, '\n');
 			wrefresh(win);
 
-			ch = getch();
-			if (ch == 'q') {
-				endwin();
-				return 0;
-			}
+			if (getch() == 'q')
+				break;
 		}
 
 		wattron(win, A_BOLD);
