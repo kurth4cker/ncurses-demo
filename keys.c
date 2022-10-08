@@ -45,11 +45,11 @@ main()
 		c = wgetch(menu_win);
 		switch (c) {
 		case KEY_UP:
-			 if(highlight == 1)
-				 highlight = n_choices;
-			 else
-				 --highlight;
-			 break;
+			if (highlight == 1)
+				highlight = n_choices;
+			else
+				--highlight;
+			break;
 		case KEY_DOWN:
 			if(highlight == n_choices)
 				highlight = 1;
@@ -84,21 +84,21 @@ main()
 void
 print_menu(WINDOW *menu_win, int highlight)
 {
-        int x, y, i;
+	int x, y, i;
 
-        x = 2;
-        y = 2;
-        box(menu_win, 0, 0);
-        for(i = 0; i < n_choices; ++i) {
+	x = 2;
+	y = 2;
+	box(menu_win, 0, 0);
+	for (i = 0; i < n_choices; i++) {
 		wmove(menu_win, y, x);
-		if(highlight == i + 1) /* High light the present choice */
-                {       wattron(menu_win, A_REVERSE);
-                        waddstr(menu_win, choices[i]);
-                        wattroff(menu_win, A_REVERSE);
-                }
-                else
-                        waddstr(menu_win, choices[i]);
-                ++y;
-        }
-        wrefresh(menu_win);
+		if (highlight == i + 1) { /* High light the present choice */
+			wattron(menu_win, A_REVERSE);
+			waddstr(menu_win, choices[i]);
+			wattroff(menu_win, A_REVERSE);
+		} else {
+			waddstr(menu_win, choices[i]);
+		}
+		y++;
+	}
+	wrefresh(menu_win);
 }
