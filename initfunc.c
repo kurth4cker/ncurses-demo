@@ -16,7 +16,6 @@ main()
 	mvaddstr(3, 0, "the pressed key is: ");
 	attron(A_BOLD);
 	addch(ch);
-	refresh();
 
 	while ((ch = getch()) != 'q') {
 		if (ch == 'o')
@@ -26,7 +25,6 @@ main()
 		else
 			addch(ch);
 	}
-	endwin();
 
-	return 0;
+	endwin();
 }

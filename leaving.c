@@ -11,7 +11,6 @@ main()
 	noecho();
 
 	addstr("hello world\n");
-	refresh();
 	getch();
 
 	def_prog_mode();
@@ -20,12 +19,8 @@ main()
 	reset_prog_mode();
 
 	addstr("another string");
-	refresh();
 
 	getch();
 	endwin();
-	if (ret == -1)
-		return 1;
-	else
-		return 0;
+	return ret == -1 ? 1 : 0;
 }

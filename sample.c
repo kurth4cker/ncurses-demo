@@ -23,7 +23,6 @@ main()
 		ch = getch();
 		num++;
 	}
-	endwin();
 
-	return 0;
+	endwin();
 }

@@ -89,5 +89,4 @@ main()
 	}
 
 	endwin();
-	return 0;
 }

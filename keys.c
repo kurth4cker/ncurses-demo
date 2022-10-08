@@ -27,7 +27,6 @@ main()
 	int c;
 
 	initscr();
-	clear();
 	noecho();
 	cbreak();
 	curs_set(0);
@@ -75,11 +74,9 @@ main()
 	}
 	mvprintw(23, 0, "you choose \'%s\'.", choices[choice - 1]);
 	mvprintw(24, 0, "it's number is %d", choice);
-	clrtoeol();
-	refresh();
+
 	getch();
 	endwin();
-	return 0;
 }
 
 void
