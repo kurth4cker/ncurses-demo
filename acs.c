@@ -48,26 +48,34 @@ ex_t acs_vars[] = {
 int
 main()
 {
-        size_t i;
+	WINDOW *win;
+	size_t i, len;
 	int ch;
+
+	len = ARRSIZE(acs_vars);
 
 	initscr();
 	curs_set(0);
 	noecho();
 
-	while ((ch = getch()) != 'q') {
-		clear();
-		attron(A_BOLD);
-		move(ARRSIZE(acs_vars) + 2, 0);
-		addstr("press `q' to exit. another key to repeat");
-		attroff(A_BOLD);
-		move(0, 0);
+	win = newwin(len + 2, 0, 0, 0);
 
-		for (i = 0; i < sizeof(acs_vars)/sizeof(*acs_vars); i++) {
-			addstr(acs_vars[i].str);
-			addch(NCURSES_ACS(acs_vars[i].var));
-			printw("    %s", acs_vars[i].macro_name);
-			addch('\n');
+	attron(A_BOLD);
+	move(len + 2, 0);
+	addstr("press `q' to exit. another key to repeat");
+	attroff(A_BOLD);
+
+	while ((ch = getch()) != 'q') {
+		wmove(win, 0, 0);
+		wclear(win);
+
+		for (i = 0; i < len; i++) {
+			waddstr(win, acs_vars[i].str);
+			waddch(win, NCURSES_ACS(acs_vars[i].var));
+			wprintw(win, "    %s", acs_vars[i].macro_name);
+			waddch(win, '\n');
+			wrefresh(win);
+
 			ch = getch();
 			if (ch == 'q') {
 				endwin();
@@ -75,13 +83,12 @@ main()
 			}
 		}
 
-		attron(A_BOLD);
-		addstr("finished");
-		attroff(A_BOLD);
+		wattron(win, A_BOLD);
+		waddstr(win, "finished");
+		wattroff(win, A_BOLD);
+		wrefresh(win);
 	}
 
-	refresh();
-	getch();
 	endwin();
 	return 0;
 }
