@@ -50,6 +50,7 @@ main()
 {
 	WINDOW *win;
 	size_t i, len;
+	int maxy;
 
 	len = ARRSIZE(acs_vars);
 
@@ -57,10 +58,13 @@ main()
 	curs_set(0);
 	noecho();
 
-	win = newwin(len + 2, 0, 0, 0);
+	maxy = getmaxy(stdscr);
+
+	win = newwin(maxy - 3, 0, 0, 0);
+	scrollok(win, TRUE);
 
 	attron(A_BOLD);
-	move(len + 2, 0);
+	move(maxy - 2, 0);
 	addstr("press `q' to exit. another key to repeat");
 	attroff(A_BOLD);
 
