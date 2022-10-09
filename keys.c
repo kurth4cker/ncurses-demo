@@ -91,13 +91,10 @@ print_menu(WINDOW *menu_win, int highlight)
 	box(menu_win, 0, 0);
 	for (i = 0; i < n_choices; i++) {
 		wmove(menu_win, y, x);
-		if (highlight == i + 1) { /* High light the present choice */
+		if (highlight == i + 1) /* High light the present choice */
 			wattron(menu_win, A_REVERSE);
-			waddstr(menu_win, choices[i]);
-			wattroff(menu_win, A_REVERSE);
-		} else {
-			waddstr(menu_win, choices[i]);
-		}
+		waddstr(menu_win, choices[i]);
+		wattroff(menu_win, A_REVERSE);
 		y++;
 	}
 	wrefresh(menu_win);
