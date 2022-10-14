@@ -20,7 +20,7 @@ main()
 	starty = maxy / 2;
 	startx = maxx / 2;
 
-	printw("press `q' to exit");
+	addstr("press `q' to exit");
 	refresh();
 
 	win = newwin(height, width, starty, startx);
