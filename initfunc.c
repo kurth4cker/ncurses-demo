@@ -1,7 +1,6 @@
 #include <ncurses.h>
 
-int
-main()
+int main()
 {
 	int ch;
 
@@ -18,7 +17,7 @@ main()
 	attron(A_BOLD);
 	addch(ch);
 
-	while ((ch = getch()) != 'q') {
+	while ((ch = getch()) != 'q')
 		switch (ch) {
 		case 'o':
 			attron(A_BOLD);
@@ -29,7 +28,6 @@ main()
 		default:
 			addch(ch);
 		}
-	}
 
 	endwin();
 }

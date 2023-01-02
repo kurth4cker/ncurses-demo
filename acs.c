@@ -7,9 +7,8 @@ struct ex {
 	char var;
 	char *macro_name;
 };
-typedef struct ex ex_t;
 
-ex_t acs_vars[] = {
+struct ex acs_vars[] = {
 	/* description,    SYMBOL in ncurses internal, macro name */
 	{"upper left corner               ", 'l', "ACS_ULCORNER"},
 	{"lower left corner               ", 'm', "ACS_LLCORNER"},
@@ -45,14 +44,10 @@ ex_t acs_vars[] = {
 	{"UK pound sign                   ", '}', "ACS_STERLING"},
 };
 
-int
-main()
+int main()
 {
 	WINDOW *win;
-	size_t i, len;
 	int maxy;
-
-	len = ARRSIZE(acs_vars);
 
 	initscr();
 	curs_set(0);
@@ -71,7 +66,7 @@ main()
 	while (getch() != 'q') {
 		wclear(win);
 
-		for (i = 0; i < len; i++) {
+		for (size_t i = 0; i < ARRSIZE(acs_vars); i++) {
 			waddstr(win, acs_vars[i].str);
 			waddch(win, NCURSES_ACS(acs_vars[i].var));
 			wprintw(win, "    %s", acs_vars[i].macro_name);

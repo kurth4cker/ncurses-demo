@@ -1,7 +1,6 @@
 #include <ncurses.h>
 
-int
-main()
+int main()
 {
 	int ch;
 	int num = 0;
@@ -21,7 +20,7 @@ main()
 	while (ch != 'q') {
 		attrset(COLOR_PAIR(num % 3 + 1));
 		ch = getch();
-		num++;
+		++num;
 	}
 
 	endwin();

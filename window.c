@@ -1,7 +1,6 @@
 #include <ncurses.h>
 
-int
-main()
+int main()
 {
 	WINDOW *win;
 	int starty, startx;

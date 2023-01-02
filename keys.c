@@ -18,13 +18,12 @@ int n_choices = sizeof(choices) / sizeof(char *);
 
 static void print_menu(WINDOW *, int);
 
-int
-main()
+int main()
 {
 	WINDOW *menu_win;
 	int highlight = 1;
 	int choice = 0;
-	int c;
+	int ch;
 
 	initscr();
 	noecho();
@@ -42,8 +41,8 @@ main()
 	refresh();
 	print_menu(menu_win, highlight);
 	while (1) {
-		c = wgetch(menu_win);
-		switch (c) {
+		ch = wgetch(menu_win);
+		switch (ch) {
 		case KEY_UP:
 			if (highlight == 1)
 				highlight = n_choices;
@@ -64,8 +63,8 @@ main()
 			return 0;
 		default:
 			move(24, 0);
-			printw("character pressed is = %3d.\n", c);
-			printw("hopefully it can be printed as '%c'", c);
+			printw("character pressed is = %3d.\n", ch);
+			printw("hopefully it can be printed as '%c'", ch);
 			refresh();
 			break;
 		}
@@ -81,15 +80,13 @@ main()
 	endwin();
 }
 
-void
-print_menu(WINDOW *menu_win, int highlight)
+void print_menu(WINDOW *menu_win, int highlight)
 {
-	int x, y, i;
+	int x = 2;
+	int y = 2;
 
-	x = 2;
-	y = 2;
 	box(menu_win, 0, 0);
-	for (i = 0; i < n_choices; i++) {
+	for (int i = 0; i < n_choices; i++) {
 		wmove(menu_win, y, x);
 		if (highlight == i + 1) /* High light the present choice */
 			wattron(menu_win, A_REVERSE);

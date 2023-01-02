@@ -1,8 +1,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
-int
-main()
+int main()
 {
 	int ret;
 
@@ -22,5 +21,5 @@ main()
 
 	getch();
 	endwin();
-	return ret == -1 ? 1 : 0;
+	return ret == -1;
 }

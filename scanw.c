@@ -1,14 +1,15 @@
 #include <string.h>
 #include <ncurses.h>
 
-int
-main()
+int main()
 {
 	char str[80];
-	int maxy = getmaxy(stdscr);
+	int maxy;
 
 	initscr();
 	curs_set(0);
+
+	maxy = getmaxy(stdscr);
 
 	move(15, 20);
 	addstr("enter a string: ");
