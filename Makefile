@@ -1,19 +1,14 @@
-.POSIX:
-# customizable macros (you can also customize CFLAGS, CPPFLAGS and LDFLAGS)
 CC = cc
 
-LDLIBS = -lncurses -ltinfo
+LDLIBS = -lcurses
 
-# don't customize them
-KHFLAGS = -std=c99 $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+BIN = sample initfunc scanw chgat window keys leaving acs
 
-PROG = sample initfunc scanw chgat window keys leaving acs
-
-all: $(PROG)
+all: $(BIN)
 
 clean:
-	rm -f $(PROG)
+	rm -f $(BIN)
 
 .SUFFIXES: .c
 .c:
-	$(CC) $(KHFLAGS) -o $@ $< $(LDLIBS)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $< $(LDLIBS)
