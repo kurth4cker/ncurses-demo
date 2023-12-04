@@ -1,6 +1,6 @@
 CC = cc
 
-LDLIBS = -lcurses
+LDFLAGS = -lcurses
 
 BIN = sample initfunc scanw chgat window keys leaving acs
 
@@ -11,4 +11,4 @@ clean:
 
 .SUFFIXES: .c
 .c:
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $< $(LDLIBS)
+	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
